@@ -28,7 +28,10 @@ io_manager: &default_io_settings
     images:
       # Relative to input_dir
       # 23085687 is the ID of the nadir camera. Delete it to process all images.
-      directory: nitelite.images/220513-FH135/23085687
+      #### CT NOTES 
+      #### 23085686 & 23085688 are the IDs of the off-axis cameras.
+      #### For only nadir images (FH135) use the following (starting with "directory:..."), instead of the below line:  directory: nitelite.images/220513-FH135/23085687
+      directory: nitelite.images/220513-FH135 #### TO RUN ON ALL IMAGES
       # Only files with these extensions will be considered.
       pattern: '\.(raw|tif|tiff)$'
     # Images with georeferencing.
