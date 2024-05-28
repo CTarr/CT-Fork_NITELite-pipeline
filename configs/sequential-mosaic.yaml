@@ -31,7 +31,8 @@ io_manager: &default_io_settings
       #### CT NOTES 
       #### 23085686 & 23085688 are the IDs of the off-axis cameras.
       #### For only nadir images (FH135) use the following (starting with "directory:..."), instead of the below line:  directory: nitelite.images/220513-FH135/23085687
-      directory: nitelite.images/220513-FH135 #### TO RUN ON ALL IMAGES
+      ####directory: nitelite.images/220513-FH135 #### TO RUN ON ALL IMAGES
+      directory: nitelite.images/220513-FH135/23085687
       # Only files with these extensions will be considered.
       pattern: '\.(raw|tif|tiff)$'
     # Images with georeferencing.
