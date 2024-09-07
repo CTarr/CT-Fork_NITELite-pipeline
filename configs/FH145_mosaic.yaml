@@ -1,0 +1,56 @@
+###############################################################################
+# Example Mosaicker Config
+###############################################################################
+# This config file is used to specify the settings for using the pipeline to generate a mosaic from referenced images.
+
+# Indicate what stage of the pipeline to run
+pipeline:
+  stage: mosaicker
+
+# I/O settings
+# These settings work for the default AWS setup.
+# The s3 buckets nitelite.metadata, nitelite.images, nitelite.referenced-images, and
+# nitelite.pipeline-output are available to the pipeline inside /data/input.
+# You can pull data from any of these simply by using the path relative to the bucket.
+# See below for examples.
+io_manager:
+  # Specifies the input data
+  input_dir: /data/input
+  input_description:
+    # Images with georeferencing. We perform a search for matching files.
+    referenced_images:
+      # This filepath is relative to input_dir
+      directory: nitelite.referenced-images/220513-FH135
+      # This is a RegEx pattern. The "1" selects nadir images only.
+      pattern: 'Geo\s\d+_1\.(tif|tiff)$'
+  # Where the output files will be saved
+  output_dir: /data/output
+  output_description:
+    used_config: used-config.yaml
+  file_exists: new
+
+# Coordinate reference-system employed
+crs:
+  projparams: 'EPSG:3857'
+
+random_state:
+  seed: 15923
+
+# These are settings for the mosaicker itself, which loops through all the images
+# and makes the mosaic.
+mosaicker:
+  # By leaving pixel_width blank, the pixel width is set based on the pixel width
+  # of the referenced images.
+  pixel_width:
+  # By leaving pixel_height blank, the pixel height is set based on the pixel height
+  # of the referenced images.
+  pixel_height:
+  dtype: uint8 # The data type of the output image. uint8 is standard.
+  n_bands: 4 # RGB +Alpha = 4 ba
+
+# The image operator is used to blend each pair of images.
+image_operator:
+  # You can place a border around the image to help see how blending worked.
+  # This value is the width of the border.
+  outline: 0
+
