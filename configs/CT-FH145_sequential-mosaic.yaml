@@ -30,8 +30,7 @@ io_manager: &default_io_settings
       # Relative to input_dir
       # 23085687 is the ID of the nadir camera. Delete it to process all images.
       ### 23085686 & 23085688 are the off-axis cameras.
-      ##directory: nitelite.images/240203-FH145/23085687
-      directory: nitelite.images/240203-FH145
+      directory: nitelite.images/240203-FH145/23085687
       # Only files with these extensions will be considered.
       pattern: '\.(raw|tif|tiff)$'
     # Images with georeferencing.
